@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelVault | Secure Text-to-Image Steganography</title>
+    <meta name="description" content="PixelVault is a free, 100% client-side image steganography tool. Hide and encrypt secret text messages inside PNG images using AES-256 encryption directly in your browser.">
+    <meta name="keywords" content="image steganography, hide text in image, secure image encryption, AES-GCM encryption, Web Crypto API, client-side steganography, PixelVault, Dippan Bhusal, cyber security tool, invisible text, LSB steganography">
+    <meta name="author" content="Dippan Bhusal">
+    <meta name="publisher" content="Dippan Bhusal">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://pixelvault-io.vercel.app/">
+    <meta property="og:title" content="PixelVault | Secure Image Steganography">
+    <meta property="og:description" content="Hide secret messages inside PNG images using military-grade AES encryption directly in your browser. Zero server uploads.">
+    <meta property="og:url" content="https://pixelvault-io.vercel.app/">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128x128.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/favicon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
+    <link rel="icon" type="image/png" sizes="384x384" href="/favicon-384x384.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon-144x144.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "PixelVault",
+          "url": "https://pixelvault-io.vercel.app/",
+          "description": "A secure, 100% client-side text-to-image steganography and AES-256 encryption tool.",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "All",
+          "author": {
+            "@type": "Person",
+            "name": "Dippan Bhusal",
+            "url": "https://dippanbhusal.tech",
+            "sameAs": [
+              "https://github.com/kdippan",
+              "https://linkedin.com/in/dippan-bhusal",
+              "https://x.com/dippanbhusal"
+            ]
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "Is my hidden data stored on your servers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. PixelVault operates 100% locally in your web browser. No image data, secret messages, or encryption passwords are ever transmitted over the internet or saved to our servers."
+            }
+          }, {
+            "@type": "Question",
+            "name": "Can the hidden text be extracted if the image is converted to JPEG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Saving or sending the encoded image as a JPEG applies lossy compression, which permanently destroys the hidden Least Significant Bit (LSB) data. You must keep the file as a PNG."
+            }
+          }, {
+            "@type": "Question",
+            "name": "How secure is the password protection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PixelVault utilizes the browser's native Web Crypto API to apply military-grade AES-GCM 256-bit encryption to your text before embedding it into the image."
+            }
+          }]
+        }
+      ]
+    }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7CGTQ3KZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WC7CGTQ3KZ');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                PixelVault
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Encode</a>
+                <a href="decode.html">Decode</a>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h1>Hide Data in Plain Sight</h1>
+            <p>Securely embed encrypted text inside any image file without altering its visual appearance. Your data never leaves your browser.</p>
+        </header>
+
+        <section class="card tool-section">
+            <div class="input-group">
+                <label for="imageInput">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Select Source Image
+                </label>
+                <input type="file" id="imageInput" accept="image/png, image/jpeg" required>
+            </div>
+
+            <div class="image-preview-container" id="previewContainer">
+                <canvas id="imageCanvas"></canvas>
+            </div>
+
+            <div class="input-group">
+                <label for="secretText">Secret Message</label>
+                <textarea id="secretText" rows="4" placeholder="Enter the text you want to hide..." required></textarea>
+                <span class="capacity-indicator" id="capacityIndicator">Max capacity: 0 characters</span>
+            </div>
+
+            <div class="input-group">
+                <label for="encryptionPassword">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    AES Encryption Password (Optional)
+                </label>
+                <input type="password" id="encryptionPassword" placeholder="Leave blank for unencrypted steganography">
+            </div>
+
+            <button type="button" id="encodeBtn" class="btn-primary" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                Encode & Download PNG
+            </button>
+        </section>
+
+        <section class="seo-content">
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>What is Image Steganography?</h3>
+                    <p>Steganography is the practice of concealing a message within another ordinary file. PixelVault utilizes <strong>Least Significant Bit (LSB)</strong> manipulation. By modifying only the last bit of the color values of an image's pixels, we can store binary data invisibly.</p>
+                </div>
+                <div class="content-card">
+                    <h3>Military-Grade Security</h3>
+                    <p>PixelVault integrates the native Web Crypto API to wrap your text in <strong>AES-GCM 256-bit encryption</strong> before it touches the image. Even if detected, attackers cannot extract the contents without your decryption password.</p>
+                </div>
+                <div class="content-card">
+                    <h3>100% Client-Side Processing</h3>
+                    <p>Unlike server-side tools, PixelVault operates entirely within your browser utilizing the HTML5 Canvas API. Your files and secrets never leave your device, ensuring total privacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section card">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h4>Is my hidden data stored on your servers?</h4>
+                    <p>No. PixelVault operates 100% locally in your web browser. No image data or passwords are ever transmitted.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can the text be extracted if the image is sent via WhatsApp or converted to JPEG?</h4>
+                    <p>No. Social media platforms and JPEG conversions apply lossy compression, which permanently destroys the hidden LSB data. You must share the file as an uncompressed PNG (e.g., via email as an attachment or file sharing links).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="developer-profile card">
+            <h2>About the Developer</h2>
+            <p>PixelVault is engineered by <strong>Dippan Bhusal</strong>, a Full-Stack Web Developer specializing in modern, responsive, and performant web applications. With a strong focus on secure PWA development, SEO optimization, and UI/UX design, Dippan builds tools that prioritize user privacy and seamless functionality.</p>
+            
+            <div class="dev-links">
+                <a href="https://dippanbhusal.tech" target="_blank" rel="noopener noreferrer">Portfolio</a>
+                <a href="https://github.com/kdippan" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/dippan-bhusal" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://x.com/dippanbhusal" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+            </div>
+
+            <div class="support-section">
+                <p style="margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">Find this tool helpful? Support the server costs:</p>
+                <a href="https://buymeacoffee.com/dippanbhusal" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" >
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Dippan Bhusal | PixelVault Steganography</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/encode.js"></script>
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+
+        function updateIcons(theme) {
+            if(theme === 'dark') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+        }
+
+        updateIcons(document.documentElement.getAttribute('data-theme'));
+
+        themeToggleBtn.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+    </script>
+</body>
+</html>
