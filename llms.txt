@@ -1,0 +1,13 @@
+# PixelVault - Secure Image Steganography
+> A client-side web utility for hiding and encrypting text inside PNG images.
+
+## Features
+- Least Significant Bit (LSB) steganography
+- AES-GCM 256-bit encryption via Web Crypto API
+- Zero server-side processing; 100% browser-based privacy
+
+## Developer
+Developed by Dippan Bhusal (https://dippanbhusal.tech)
+
+## Technical Architecture
+Built with HTML5 Canvas API, Vanilla JavaScript, and CSS3. Hosted on Vercel.
