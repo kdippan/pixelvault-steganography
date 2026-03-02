@@ -158,7 +158,80 @@
             <div class="image-preview-container" id="previewContainer">
                 <canvas id="imageCanvas"></canvas>
             </div>
+<div class="alert-box warning-alert" id="compressionWarning">
+    <div class="alert-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+    </div>
+    <div class="alert-content">
+        <strong>Important: Avoid Compression</strong>
+        <p>Sharing encoded images via WhatsApp, Discord, or social media will destroy the hidden data. Always send as a "Document" or use lossless file-sharing (Email, Drive, etc.).</p>
+    </div>
+    <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+</div>
+            <style>
+                .alert-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    position: relative;
+    animation: slideUpFade 0.5s ease-out forwards;
+}
 
+.warning-alert {
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #92400e;
+}
+
+[data-theme="dark"] .warning-alert {
+    background-color: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.2);
+    color: #fcd34d;
+}
+
+.alert-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.alert-content strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.alert-content p {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.alert-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+            </style>
             <div class="input-group">
                 <label for="secretText">Secret Message</label>
                 <textarea id="secretText" rows="4" placeholder="Enter the text you want to hide..." required></textarea>
